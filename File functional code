@@ -1,0 +1,13 @@
+# installing tabula
+
+ # pip install tabula-py
+
+ # import and convert
+
+ import tabula 
+
+file = 'data.pdf'
+
+pdfData = tabula.read_pdf(file,pages = 1)
+
+
