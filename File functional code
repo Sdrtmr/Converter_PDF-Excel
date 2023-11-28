@@ -4,10 +4,14 @@
 
  # import and convert
 
- import tabula 
+import tabula 
 
 file = 'data.pdf'
 
-pdfData = tabula.read_pdf(file,pages = 1)
+pdfData = tabula.read_pdf(pdf_in, pages = 'all')
+
+print ('\nTables from PDF file\n'+str(PDF))
+
+
 
 
