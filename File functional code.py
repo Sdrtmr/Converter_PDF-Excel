@@ -9,7 +9,7 @@ import pandas as pd
 
 pdf_in = "D:/Folder/File.pdf"
 
-PDF = tabula.read_pdf(pdf_in, pages = 'all') 
+PDF = tabula.read_pdf(pdf_in, pages = 'all', multiple_tables=True) 
 
 # view result
 
