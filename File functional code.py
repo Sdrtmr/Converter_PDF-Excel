@@ -7,7 +7,7 @@
 import tabula 
 import pandas as pd
 
-pdf_in = "C:/Users/user/Documents/Trofimova-2013.pdf"
+pdf_in = "D:/Folder/File.pdf"
 
 PDF = tabula.read_pdf(pdf_in, pages = 'all', multiple_tables=True) 
 
