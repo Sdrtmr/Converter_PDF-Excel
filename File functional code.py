@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import filedialog
 import PyPDF2
 import pandas as pd
@@ -30,12 +31,19 @@ def convert():
             success_label.config(text='Конвертация выполнена успешно')
 
 root = tk.Tk()
-root.title('PDF to Excel Converter')
+root.title('конвертор из PDF в Excel')
+root.geometry('700x170')
+root.resizable(width=False, height=False)
 
-convert_btn = tk.Button(root, text='Выбрать PDF и сохранить в Excel', command=convert)
-convert_btn.pack(pady=20)
+# Set the background color to gray
+root.configure(bg='gray')
+
+convert_btn = tk.Button(root, text='Выбрать PDF и сохранить в Excel', command=convert, font=('Helvetica', '10', 'bold'))
+convert_btn.place(x=150, y=30)
+convert_btn.config(width=50, height=4, foreground="#000000", background='#8B8F8F')
 
 success_label = tk.Label(root, text='')
+success_label.configure(bg='gray', fg='gray')
 success_label.pack()
 
 root.mainloop()
