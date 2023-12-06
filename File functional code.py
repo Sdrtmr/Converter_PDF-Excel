@@ -1,25 +1,41 @@
-# installing tabula
-
- # pip install tabula-py
-
- # import pandas and convert
-
-import tabula 
+import tkinter as tk
+from tkinter import filedialog
+import PyPDF2
 import pandas as pd
 
-pdf_in = "D:/Folder/File.pdf"
+def convert():
+    pdf_path = filedialog.askopenfilename(filetypes=[('PDF Files', '*.pdf')])
+    if pdf_path:
+        excel_path = filedialog.asksaveasfilename(defaultextension='.xlsx')
+        if excel_path:
+            pdf_file = open(pdf_path, 'rb')
+            pdf_reader = PyPDF2.PdfFileReader(pdf_file)
 
-PDF = tabula.read_pdf(pdf_in, pages = 'all', multiple_tables=True) 
+            num_pages = pdf_reader.numPages
+            rows = []
 
-# view result
+            for page in range(num_pages):
+                page_obj = pdf_reader.getPage(page)
+                content = page_obj.extract_text()
 
-print ('\nTables from PDF file\n'+str(PDF))
+                # Разделение содержимого на строки
+                lines = content.split('\n')
+                rows.extend(lines)
 
-pdf_out_xlsx = "D:\Temp\From_PDF.xlsx"
+            # Создание датафрейма из строк
+            df = pd.DataFrame(rows)
 
-# converting to Excel 
+            # Запись датафрейма в Excel-файл
+            df.to_excel(excel_path, index=False)
+            success_label.config(text='Конвертация выполнена успешно')
 
-PDF = pd.DataFrame(PDF)
-PDF.to_excel(pdf_out_xlsx,index=False) 
+root = tk.Tk()
+root.title('PDF to Excel Converter')
 
-print("Done") 
+convert_btn = tk.Button(root, text='Выбрать PDF и сохранить в Excel', command=convert)
+convert_btn.pack(pady=20)
+
+success_label = tk.Label(root, text='')
+success_label.pack()
+
+root.mainloop()
