@@ -31,7 +31,7 @@ def convert():
             success_label.config(text='Конвертация выполнена успешно')
 
 root = tk.Tk()
-root.title('конвертор из PDF в Excel')
+root.title('конвертер из PDF в Excel')
 root.geometry('700x170')
 root.resizable(width=False, height=False)
 
