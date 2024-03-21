@@ -1,5 +1,5 @@
  README.md 
- This programm converting PDF files into Excel files   
+ This program converting PDF files into Excel files   
 
 
 
